@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!-- Configurações da Conexão -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/sigcopex</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">uy2to7k5</property>
+    
+     <!-- Pool de conexões JDBC -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <!-- Gerenciamento da sessão -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Desabilita a cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+        <!-- Exibe os comandos SQL -->
+        <property name="show_sql">true</property>
+
+        <!-- Cria as tabelas -->
+        <property name="hbm2ddl.auto">validate</property>  <!-- create, validate -->
+
+        <mapping class="br.com.sigcopex.domain.Usuario"/>
+        <mapping class="br.com.sigcopex.domain.Disciplina"/>
+        <mapping class="br.com.sigcopex.domain.Curso"/>
+        
+  </session-factory>
+</hibernate-configuration>

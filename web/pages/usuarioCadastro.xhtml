@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      
+    <ui:composition template="/templates/modelo_geral.xhtml">
+        
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="usuacao" value="#{usuarioBean.acao}" />
+                <f:viewParam name="usucod" value="#{usuarioBean.codigo}" />
+                
+                <f:event listener="#{usuarioBean.carregarCadastro}" type="preRenderView" />
+            </f:metadata>
+        </ui:define>
+        
+        <ui:define name="conteudo">
+            <h:form id="frmUsuario">
+                <p:toolbar>
+                    <f:facet name="left">
+                        <h:outputText value="Usuários" />
+                    </f:facet>
+                </p:toolbar>
+                
+                <h:panelGrid columns="4" id="pnlUsuarioDados">
+                <p:outputLabel value="Matricula:" />
+                <p:inputText size="10" readonly="false" value="#{usuarioBean.usuarioCadastro.codigo}"/>
+                
+                <p:outputLabel value="Nome:" />
+                <p:inputText maxlength="50" size="35" value="#{usuarioBean.usuarioCadastro.nome}"/>
+                
+                <p:outputLabel value="Identidade:" />
+                <p:inputText maxlength="20" size="35" value="#{usuarioBean.usuarioCadastro.identidade}"/>
+                                
+                        
+                <p:outputLabel for="phone" value="Phone:" />
+                <p:inputMask id="phone" mask="(99)9999-9999" size="35" value="#{usuarioBean.usuarioCadastro.telefone}"/>
+                
+                <p:outputLabel value="Endereço:" />
+                <p:inputText maxlength="50" size="35" value="#{usuarioBean.usuarioCadastro.endereco}"/>
+                
+                <p:outputLabel value="Email:" />
+                <p:inputText maxlength="40" size="35" value="#{usuarioBean.usuarioCadastro.email}"/>
+                
+                
+                    
+                    <p:outputLabel value="Função:" />
+                    <p:selectOneMenu value="#{usuarioBean.usuarioCadastro.funcao}"
+                                     disabled="#{usuarioBean.acao == 'Excluir'}">
+                        <f:selectItem itemValue="" itemLabel="Selecione uma função" />
+                        <f:selectItem itemValue="Administrador" itemLabel="Administrador" />
+                        <f:selectItem itemValue="Professor" itemLabel="Professor" />
+                        <f:selectItem itemValue="Funcionário" itemLabel="Funcionário" />
+                            
+                    </p:selectOneMenu>
+                    
+                    
+                </h:panelGrid>
+                <h:panelGrid columns="2" id="pnlUsuarioDados2">
+                    <p:outputLabel value="CPF:" />
+                    <p:inputMask mask="999.999.999-99" size="12" value="#{usuarioBean.usuarioCadastro.cpf}"/>
+                    
+                    <p:outputLabel value="Senha:" />
+                    <p:password maxlength="32" size="12" value="#{usuarioBean.usuarioCadastro.senha}"/>
+                     
+                 </h:panelGrid>
+                
+               <h:panelGrid columns="3">
+                   <p:commandButton value="Novo" actionListener="#{usuarioBean.novo}" update=":frmUsuario:pnlUsuarioDados :frmUsuario:pnlUsuarioDados2"/>
+                <p:commandButton value="Salvar" actionListener="#{usuarioBean.salvar()}" update=":msgGlobal :frmUsuario:pnlUsuarioDados :frmUsuario:pnlUsuarioDados2"/>
+                
+                <p:button value="Voltar" outcome="/pages/usuarioPesquisa.xhtml" />
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition> 
+</html>
