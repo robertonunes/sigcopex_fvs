@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 /**
  *
- * @author Roberto
+ * @author Roberto Nunes
  */
 
 @Entity
