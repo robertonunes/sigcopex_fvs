@@ -33,21 +33,25 @@ public class AutenticacaoBean {
     }
     
     
-    public void autenticar(){
+    public String autenticar(){
         try {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             usuarioLogado = usuarioDAO.autenticar(usuarioLogado.getCpf(), usuarioLogado.getSenha());
             if (usuarioLogado == null) {
                 FacesUtil.adicionarMsgError("CPF e/ou senha inválido(s)");
+                return null;
             } else{
                 FacesUtil.adicionarMsgInfo("Usuário autenticado com sucesso");
+                return "/pages/principal.xhtml?faces-redirect=true";
             }
             
         } catch (RuntimeException ex) {
             FacesUtil
                     .adicionarMsgError("Erro ao tentar autenticar no sistema: "
                     + ex.getMessage());
+            return null;
         }
+        
     }
     
     public String sair(){

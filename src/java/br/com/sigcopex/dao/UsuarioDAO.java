@@ -124,5 +124,6 @@ public class UsuarioDAO {
             sessao.close();
         }
         return usuario;
+        
     }
 }
