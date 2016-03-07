@@ -24,7 +24,6 @@ import org.hibernate.validator.constraints.br.CPF;
 })
 public class Usuario {
     @Id
-    
     @Column(name = "user_codigo")
     private Long codigo;
     

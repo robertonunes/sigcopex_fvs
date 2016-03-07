@@ -25,31 +25,49 @@
                     </f:facet>
                 </p:toolbar>
                 
-                <h:panelGrid columns="4" id="pnlUsuarioDados">
+                <h:panelGrid id="pnlUsuarioDados" columns="2">
                 <p:outputLabel value="Matricula:" />
-                <p:inputText size="10" readonly="false" value="#{usuarioBean.usuarioCadastro.codigo}"/>
+                <p:inputText size="10"  
+                             value="#{usuarioBean.usuarioCadastro.codigo}"
+                             readonly="#{usuarioBean.acao == 'Excluir'}"/>
                 
                 <p:outputLabel value="Nome:" />
-                <p:inputText maxlength="50" size="35" value="#{usuarioBean.usuarioCadastro.nome}"/>
+                <p:inputText maxlength="50" size="35" 
+                             value="#{usuarioBean.usuarioCadastro.nome}"
+                             readonly="#{usuarioBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputText>
                 
                 <p:outputLabel value="Identidade:" />
-                <p:inputText maxlength="20" size="35" value="#{usuarioBean.usuarioCadastro.identidade}"/>
+                <p:inputText maxlength="20" size="35" 
+                             value="#{usuarioBean.usuarioCadastro.identidade}"
+                             readonly="#{usuarioBean.acao == 'Excluir'}"/>
                                 
                         
                 <p:outputLabel for="phone" value="Phone:" />
-                <p:inputMask id="phone" mask="(99)9999-9999" size="35" value="#{usuarioBean.usuarioCadastro.telefone}"/>
+                <p:inputMask id="phone" mask="(99)9999-9999" size="35" 
+                             value="#{usuarioBean.usuarioCadastro.telefone}"
+                             readonly="#{usuarioBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputMask>
                 
                 <p:outputLabel value="Endereço:" />
-                <p:inputText maxlength="50" size="35" value="#{usuarioBean.usuarioCadastro.endereco}"/>
+                <p:inputText maxlength="50" size="35" 
+                             value="#{usuarioBean.usuarioCadastro.endereco}"
+                              readonly="#{usuarioBean.acao == 'Excluir'}"/>
                 
                 <p:outputLabel value="Email:" />
-                <p:inputText maxlength="40" size="35" value="#{usuarioBean.usuarioCadastro.email}"/>
+                <p:inputText maxlength="40" size="35" 
+                             value="#{usuarioBean.usuarioCadastro.email}"
+                             readonly="#{usuarioBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputText>
                 
                 
                     
                     <p:outputLabel value="Função:" />
                     <p:selectOneMenu value="#{usuarioBean.usuarioCadastro.funcao}"
-                                     disabled="#{usuarioBean.acao == 'Excluir'}">
+                                     >
                         <f:selectItem itemValue="" itemLabel="Selecione uma função" />
                         <f:selectItem itemValue="Administrador" itemLabel="Administrador" />
                         <f:selectItem itemValue="Professor" itemLabel="Professor" />
@@ -57,22 +75,48 @@
                             
                     </p:selectOneMenu>
                     
-                    
-                </h:panelGrid>
-                <h:panelGrid columns="2" id="pnlUsuarioDados2">
                     <p:outputLabel value="CPF:" />
-                    <p:inputMask mask="999.999.999-99" size="12" value="#{usuarioBean.usuarioCadastro.cpf}"/>
+                    <p:inputMask mask="999.999.999-99" 
+                                 size="20" value="#{usuarioBean.usuarioCadastro.cpf}"
+                                 readonly="#{usuarioBean.acao == 'Excluir'}">
+                        <f:validateBean />
+                    </p:inputMask>
                     
                     <p:outputLabel value="Senha:" />
-                    <p:password maxlength="32" size="12" value="#{usuarioBean.usuarioCadastro.senha}"/>
-                     
-                 </h:panelGrid>
+                    <p:password maxlength="32" size="12" 
+                                value="#{usuarioBean.usuarioCadastro.senha}"
+                                readonly="#{usuarioBean.acao == 'Excluir'}"
+                                redisplay="true">
+                        <f:validateBean />
+                    </p:password>
+                    
+                </h:panelGrid>
                 
-               <h:panelGrid columns="3">
-                   <p:commandButton value="Novo" actionListener="#{usuarioBean.novo}" update=":frmUsuario:pnlUsuarioDados :frmUsuario:pnlUsuarioDados2"/>
-                <p:commandButton value="Salvar" actionListener="#{usuarioBean.salvar()}" update=":msgGlobal :frmUsuario:pnlUsuarioDados :frmUsuario:pnlUsuarioDados2"/>
                 
-                <p:button value="Voltar" outcome="/pages/usuarioPesquisa.xhtml" />
+               <h:panelGrid columns="5">
+                   
+                                 
+                   
+                   <p:commandButton value="Novo" 
+                                    actionListener="#{usuarioBean.novo}" 
+                                    update=":frmUsuario:pnlUsuarioDados"
+                                    rendered="#{usuarioBean.acao == 'Novo'}"/>
+                   
+                <p:commandButton value="Salvar" actionListener="#{usuarioBean.salvar}" 
+                                 update=":msgGlobal :frmUsuario:pnlUsuarioDados"
+                                 rendered="#{usuarioBean.acao == 'Novo'}"/>
+                
+                <p:commandButton value="Excluir"
+                                     actionListener="#{usuarioBean.excluir}"
+                                     update=":msgGlobal"
+                                     rendered="#{usuarioBean.acao == 'Excluir'}"/>
+                    
+                    <p:commandButton value="Editar" 
+                                     actionListener="#{usuarioBean.editar}" update=":msgGlobal"
+                                     rendered="#{usuarioBean.acao == 'Editar'}"/>
+                    
+                    <p:button value="Voltar" 
+                                     outcome="/pages/usuarioPesquisa.xhtml?faces-redirect=true"/>
                 </h:panelGrid>
             </h:form>
         </ui:define>

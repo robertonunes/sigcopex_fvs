@@ -7,6 +7,7 @@ import br.com.sigcopex.util.FacesUtil;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.apache.commons.codec.digest.DigestUtils;
 
 @ManagedBean
 @ViewScoped
@@ -130,6 +131,8 @@ public class UsuarioBean {
     public void editar(){
         try{
             UsuarioDAO usuarioDAO = new UsuarioDAO();
+            /* Transformar senha em MD5
+            usuarioCadastro.setSenha(DigestUtils.md5Hex(usuarioCadastro.getSenha()));*/
             usuarioDAO.editar(usuarioCadastro);
             
             FacesUtil.adicionarMsgInfo("Usuário editado com sucesso");
