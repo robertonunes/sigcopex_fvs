@@ -13,7 +13,7 @@
         <h:outputStylesheet library="css" name="estilo.css"/>
     </h:head>
     <h:body>
-        <p:growl id="msgGlobal" sticky="true"/>
+        <p:growl id="msgGlobal" sticky="false"/>
         
         
         <p:layout fullPage="true">
@@ -35,24 +35,34 @@
     
         <p:menu id="pnlMnPrincipal">
             <p:submenu label="Arquivo">
-                <p:menuitem value="Autenticação" outcome="/pages/autenticacao.xhtml" icon="ui-icon-home"
+                <p:menuitem value="Autenticação" outcome="/pages/autenticacao.xhtml" icon="ui-icon-key"
                             rendered="#{autenticacaoBean.usuarioLogado.funcao == null}"/>
                 <p:menuitem value="Principal" outcome="/pages/principal.xhtml" icon="ui-icon-home" 
                             rendered="#{autenticacaoBean.usuarioLogado.funcao !=null}"/>
                 <p:menuitem value="Sair" action="#{autenticacaoBean.sair}"
-                            icon="ui-icon-close"
+                            icon="ui-icon-power"
                             rendered="#{autenticacaoBean.usuarioLogado.funcao !=null}"/>
             </p:submenu>
             <p:submenu label="Cadastrar" 
                        rendered="#{autenticacaoBean.usuarioLogado.funcao !=null}">
-                <p:menuitem value="Usuário" outcome="/pages/usuarioPesquisa.xhtml" icon="ui-icon-user"
+                <p:menuitem value="Usuário" outcome="/pages/usuarioPesquisa.xhtml" icon="ui-icon-person"
                             rendered="#{autenticacaoBean.usuarioLogado.funcao != 'Professor'}"/>
-                <p:menuitem value="Formulário" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
-                <p:menuitem value="Curso" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+                <p:menuitem value="Curso" actionListener="#{menuView.delete}" update="messages" 
+                            ajax="false" icon="ui-icon-suitcase"/>
+                <p:menuitem value="Professor" actionListener="#{menuView.delete}" 
+                            update="messages" ajax="false" icon="ui-icon-pencil"/>
             </p:submenu>
-            <p:submenu label="Navigations">
-                <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                <p:menuitem value="Internal"  icon="ui-icon-star"/>
+            
+            <p:submenu label="Formulários"
+                       rendered="#{autenticacaoBean.usuarioLogado.funcao != null}">
+                <p:menuitem value="Formulário de Monitoria" outcome="/pages/formularioMonitoria.xhtml" 
+                            icon="ui-icon-document"/>
+                
+            </p:submenu>
+            
+            <p:submenu label="SigSistemas">
+                <p:menuitem value="Suporte" url="http://www.primefaces.org" icon="ui-icon-wrench"/>
+                <p:menuitem value="Sobre"  outcome="/pages/sobre.xhtml" icon="ui-icon-help"/>
             </p:submenu>
         </p:menu>
             

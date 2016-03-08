@@ -29,6 +29,7 @@
         <mapping class="br.com.sigcopex.domain.Usuario"/>
         <mapping class="br.com.sigcopex.domain.Disciplina"/>
         <mapping class="br.com.sigcopex.domain.Curso"/>
+        <mapping class="br.com.sigcopex.domain.FormularioMonitoria"/>
         
   </session-factory>
 </hibernate-configuration>
