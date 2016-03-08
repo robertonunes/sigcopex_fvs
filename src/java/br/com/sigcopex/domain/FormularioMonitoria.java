@@ -17,14 +17,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tbl_monitoria")
 @NamedQueries({
-    @NamedQuery(name = "usuario.listar", query = "SELECT usuario FROM FormularioMonitoria usuario"),
-    @NamedQuery(name = "usuario.buscarPorMonitoria", query = "SELECT usuario FROM FormularioMonitoria usuario WHERE usuario.professor = :professor")    
+     @NamedQuery(name = "FormularioMonitoria.listar", query = "SELECT formularioMonitoria FROM FormularioMonitoria formularioMonitoria"),
+     @NamedQuery(name = "FormularioMonitoria.buscarPorCodigo", query = "SELECT formularioMonitoria FROM FormularioMonitoria formularioMonitoria WHERE formularioMonitoria.codigo = :codigo")
 })
 public class FormularioMonitoria {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     @Column (name = "mon_id")
-    private Long id;
+    private Long codigo;
     
     @Column (name = "mon_nome", length = 60, nullable = false)
     private String professor;
@@ -64,15 +64,15 @@ public class FormularioMonitoria {
     /**
      * @return the id
      */
-    public Long getId() {
-        return id;
+    public Long getCodigo() {
+        return codigo;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long codigo) {
+        this.codigo = codigo;
     }
 
     /**
