@@ -76,6 +76,7 @@ public class UsuarioBean {
     public void salvar(){
         try{
             UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuarioCadastro.setSenha(DigestUtils.md5Hex(usuarioCadastro.getSenha()));
             usuarioDAO.salvar(getUsuarioCadastro());
             
             usuarioCadastro = new Usuario();
@@ -131,8 +132,8 @@ public class UsuarioBean {
     public void editar(){
         try{
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            /* Transformar senha em MD5
-            usuarioCadastro.setSenha(DigestUtils.md5Hex(usuarioCadastro.getSenha()));*/
+            /* Transformar senha em MD5 */
+            usuarioCadastro.setSenha(DigestUtils.md5Hex(usuarioCadastro.getSenha()));
             usuarioDAO.editar(usuarioCadastro);
             
             FacesUtil.adicionarMsgInfo("Usuário editado com sucesso");

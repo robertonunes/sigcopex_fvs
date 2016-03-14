@@ -52,7 +52,6 @@ public class Usuario {
     
     //curso que ministra fazer uma classe e herda-la
     @NotEmpty(message = "O campo senha é obrigatório")
-    @Size(min = 6,max = 8,message = "Tamanho inválido para o campo senha (6 - 8)")
     @Column(name = "user_senha", length = 32, nullable = false)
     private String senha;
     

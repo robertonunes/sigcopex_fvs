@@ -10,6 +10,7 @@ import br.com.sigcopex.domain.Usuario;
 import br.com.sigcopex.util.FacesUtil;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -36,12 +37,13 @@ public class AutenticacaoBean {
     public String autenticar(){
         try {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            usuarioLogado = usuarioDAO.autenticar(usuarioLogado.getCpf(), usuarioLogado.getSenha());
+            usuarioLogado = usuarioDAO.autenticar(
+                    usuarioLogado.getCpf(), DigestUtils.md5Hex(usuarioLogado.getSenha()));
             if (usuarioLogado == null) {
                 FacesUtil.adicionarMsgError("CPF e/ou senha inválido(s)");
                 return null;
             } else{
-                FacesUtil.adicionarMsgInfo("Usuário autenticado com sucesso");
+                FacesUtil.adicionarMsgInfo("Usuário autenticado com sucesso: "+usuarioLogado.getNome());
                 return "/pages/principal.xhtml?faces-redirect=true";
             }
             
