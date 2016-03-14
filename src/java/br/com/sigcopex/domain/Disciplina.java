@@ -28,57 +28,41 @@ public class Disciplina {
     @Column (name = "disci_nome", length = 60, nullable = false)
     private String nome;
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "tbl_curso_curso_codigo", 
-            referencedColumnName = "curso_codigo", nullable = false)
-    private Curso curso;
+    @Column (name = "disci_horas", length = 3, nullable = false)   
+    private Long horas;
 
-    /**
-     * @return the codigo
-     */
     public Long getCodigo() {
         return codigo;
     }
 
-    /**
-     * @param codigo the codigo to set
-     */
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 
-    /**
-     * @return the nome
-     */
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * @return the curso
-     */
-    public Curso getCurso() {
-        return curso;
+    public Long getHoras() {
+        return horas;
     }
 
-    /**
-     * @param curso the curso to set
-     */
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public void setHoras(Long horas) {
+        this.horas = horas;
     }
 
     @Override
     public String toString() {
-        return "Disciplina{" + "codigo=" + codigo + ", nome=" + nome + ", curso=" + curso + '}';
+        return "Disciplina{" + "codigo=" + codigo + ", nome=" + nome + ", horas=" + horas + '}';
     }
+
+    /**
+     * @return the codigo
+     */
     
     
     

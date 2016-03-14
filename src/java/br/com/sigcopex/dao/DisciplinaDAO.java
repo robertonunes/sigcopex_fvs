@@ -51,13 +51,13 @@ public class DisciplinaDAO {
     }
     
     
-    public Disciplina buscarPorMatricula (Long matricula){
+    public Disciplina buscarPorCodigo (Long codigo){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Disciplina disciplina = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Disciplina.buscarPorMatricula");
-            consulta.setLong("codigo", matricula);
+            Query consulta = sessao.getNamedQuery("Disciplina.buscarPorCodigo");
+            consulta.setLong("codigo", codigo);
             
             disciplina = (Disciplina) consulta.uniqueResult();
         } catch (RuntimeException ex) {
