@@ -69,9 +69,9 @@
                 </p:inputText>
                 
                   
-                   <p:outputLabel value="Disciplina:" />
+                   <p:outputLabel value="Vagas" />
                    <p:inputText maxlength="3" size="10" 
-                             value="#{formularioMonitoriaBean.monitoriaCadastro.disciplina}"
+                             value="#{formularioMonitoriaBean.monitoriaCadastro.vagas}"
                              readonly="#{formularioMonitoriaBean.acao == 'Excluir'}">
                     <f:validateBean />
                 </p:inputText>
@@ -86,6 +86,12 @@
                             
                     </p:selectOneMenu>
                  
+                  <p:outputLabel value="Data da Prova" />
+                <p:inputText maxlength="30" size="10" 
+                             value="#{formularioMonitoriaBean.monitoriaCadastro.semestre}"
+                             readonly="#{formularioMonitoriaBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputText>
                  
                  <p:outputLabel value="Justificativa:" />
                  <p:inputTextarea maxlength="500" autoResize="true" 

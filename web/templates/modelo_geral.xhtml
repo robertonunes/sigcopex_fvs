@@ -23,10 +23,7 @@
         
     </p:layoutUnit>
  
-    <p:layoutUnit 
-                  position="south" resizable="false" closable="false" collapsible="false">
-        <img  src="../img/rodape.png"/>
-    </p:layoutUnit>
+    
  
     <p:layoutUnit position="west"  size="250" resizable="false" closable="false" collapsible="false">
         <h:form id="frmMnPrincipal">
@@ -34,7 +31,7 @@
             <p:growl id="messages" showDetail="false"/>
  
     
-        <p:menu id="pnlMnPrincipal">
+            <p:menu id="pnlMnPrincipal" style="width: 95%">
             <p:submenu label="Arquivo">
                 <p:menuitem value="Autenticação" outcome="/pages/autenticacao.xhtml" icon="ui-icon-key"
                             rendered="#{autenticacaoBean.usuarioLogado.funcao == null}"/>
