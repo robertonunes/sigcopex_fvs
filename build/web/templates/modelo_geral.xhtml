@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <h:head>
+        <title>SigCopex</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="estilo.css"/>
+    </h:head>
+    <h:body>
+        <p:growl id="msgGlobal" sticky="false"/>
+        
+        
+        <p:layout fullPage="true">
+            <p:layoutUnit header="Sistema para Gerenciamento da Comissão de Pesquisa e Extensão"
+                          position="north"   resizable="false" closable="false" collapsible="false">
+                
+        
+    </p:layoutUnit>
+ 
+    
+ 
+    <p:layoutUnit position="west"  size="250" resizable="false" closable="false" collapsible="false">
+        <h:form id="frmMnPrincipal">
+      
+            <p:growl id="messages" showDetail="false"/>
+ 
+    
+            <p:menu id="pnlMnPrincipal" style="width: 95%">
+            <p:submenu label="Arquivo">
+                <p:menuitem value="Autenticação" outcome="/pages/autenticacao.xhtml" icon="ui-icon-key"
+                            rendered="#{autenticacaoBean.usuarioLogado.funcao == null}"/>
+                <p:menuitem value="Principal" outcome="/pages/principal.xhtml" icon="ui-icon-home" 
+                            rendered="#{autenticacaoBean.usuarioLogado.funcao !=null}"/>
+                <p:menuitem value="Sair" action="#{autenticacaoBean.sair}"
+                            icon="ui-icon-power"
+                            rendered="#{autenticacaoBean.usuarioLogado.funcao !=null}"/>
+            </p:submenu>
+            <p:submenu label="Cadastrar" 
+                       rendered="#{autenticacaoBean.usuarioLogado.funcao !=null}">
+                <p:menuitem value="Usuário" outcome="/pages/usuarioPesquisa.xhtml" icon="ui-icon-person"
+                            rendered="#{autenticacaoBean.usuarioLogado.funcao != 'Professor'}"/>
+                <p:menuitem value="Curso" actionListener="#{menuView.delete}" update="messages" 
+                            ajax="false" icon="ui-icon-suitcase"/>
+                <p:menuitem value="Professor" actionListener="#{menuView.delete}" 
+                            update="messages" ajax="false" icon="ui-icon-pencil"/>
+            </p:submenu>
+            
+            <p:submenu label="Formulários"
+                       rendered="#{autenticacaoBean.usuarioLogado.funcao != null}">
+                <p:menuitem value="Formulário de Monitoria" outcome="/pages/formularioMonitoria.xhtml" 
+                            icon="ui-icon-document"/>
+                
+            </p:submenu>
+            
+            <p:submenu label="SigSistemas">
+                <p:menuitem value="Suporte" url="http://www.primefaces.org" icon="ui-icon-wrench"/>
+                <p:menuitem value="Sobre"  outcome="/pages/sobre.xhtml" icon="ui-icon-help"/>
+            </p:submenu>
+        </p:menu>
+            
+            
+                   
+          
+        
+        </h:form>
+    </p:layoutUnit>
+ 
+   
+ 
+    <p:layoutUnit position="center" resizable="false" closable="false" collapsible="false">
+        <ui:insert name="conteudo" />
+        
+    </p:layoutUnit>
+            
+        </p:layout>
+    </h:body>
+</html>
