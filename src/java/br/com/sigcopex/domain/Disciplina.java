@@ -21,7 +21,7 @@ import javax.persistence.*;
 public class Disciplina {
     
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    
     @Column (name = "disci_codigo")
     private Long codigo;
     
