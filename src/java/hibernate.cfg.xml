@@ -24,7 +24,7 @@
         <property name="show_sql">true</property>
 
         <!-- Cria as tabelas -->
-        <property name="hbm2ddl.auto">validate</property>  <!-- create, validate -->
+        <property name="hbm2ddl.auto">update</property>  <!-- create, validate -->
 
         <mapping class="br.com.sigcopex.domain.Usuario"/>
         <mapping class="br.com.sigcopex.domain.Disciplina"/>
