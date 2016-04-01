@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.sigcopex.bean;
 
 import br.com.sigcopex.dao.DisciplinaDAO;
 import br.com.sigcopex.domain.Disciplina;
 import br.com.sigcopex.util.FacesUtil;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
-/**
- *
- * @author Roberto
- */
+
+
+@ManagedBean
+@ViewScoped
 public class DisciplinaBean {
     private Disciplina disciplinaCadastro;
     private List<Disciplina> listaDisciplinas;
@@ -25,14 +23,14 @@ public class DisciplinaBean {
      /**
      * @return the usuarioCadastro
      */
-    public Disciplina getDisciplina() {
+    public Disciplina getDisciplinaCadastro() {
         if(disciplinaCadastro == null){
             disciplinaCadastro = new Disciplina();
         }
         return disciplinaCadastro;
     }
 
-    public List<Disciplina> getDisciplinas() {
+    public List<Disciplina> getListaDisciplinas() {
         return listaDisciplinas;
     }
 
@@ -66,7 +64,7 @@ public class DisciplinaBean {
     
     
     /**
-     * @param disciplinaCadastro the monitoriaCadastro to set
+     * @param disciplinaCadastro the usuarioCadastro to set
      */
     public void setDisciplinaCadastro(Disciplina disciplinaCadastro) {
         this.disciplinaCadastro = disciplinaCadastro;
@@ -79,7 +77,7 @@ public class DisciplinaBean {
     public void salvar(){
         try{
             DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-            disciplinaDAO.salvar(getDisciplina());
+            disciplinaDAO.salvar(getDisciplinaCadastro());
             
             disciplinaCadastro = new Disciplina();
             
@@ -124,9 +122,9 @@ public class DisciplinaBean {
             disciplinaDAO.excluir(disciplinaCadastro);
             
                         
-            FacesUtil.adicionarMsgInfo("Disciplina removido com sucesso");
+            FacesUtil.adicionarMsgInfo("Disciplina removida com sucesso");
         }catch(RuntimeException ex){
-            FacesUtil.adicionarMsgError("Erro ao tentar remover a Disciplina: " + ex.getMessage());
+            FacesUtil.adicionarMsgError("Erro ao tentar remover a disciplina: " + ex.getMessage());
         }
         
     }
@@ -134,13 +132,12 @@ public class DisciplinaBean {
     public void editar(){
         try{
             DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-            /* Transformar senha em MD5
-            usuarioCadastro.setSenha(DigestUtils.md5Hex(usuarioCadastro.getSenha()));*/
+            /* Transformar senha em MD5 */
             disciplinaDAO.editar(disciplinaCadastro);
             
             FacesUtil.adicionarMsgInfo("Disciplina editado com sucesso");
         }catch(RuntimeException ex){
-            FacesUtil.adicionarMsgError("Erro ao tentar editar a Disciplina: " + ex.getMessage());
+            FacesUtil.adicionarMsgError("Erro ao tentar editar a disciplina: " + ex.getMessage());
         }
         
     }

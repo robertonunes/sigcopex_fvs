@@ -43,9 +43,13 @@
                        rendered="#{autenticacaoBean.usuarioLogado.funcao !=null}">
                 <p:menuitem value="Usuário" outcome="/pages/usuarioPesquisa.xhtml" icon="ui-icon-person"
                             rendered="#{autenticacaoBean.usuarioLogado.funcao != 'Professor'}"/>
-                <p:menuitem value="Curso" outcome="/pages/cursoPesquisa.xhtml" icon="ui-icon-suitcase"/>
-                <p:menuitem value="Professor" actionListener="#{menuView.delete}" 
-                            update="messages" ajax="false" icon="ui-icon-pencil"/>
+                 <p:menuitem value="Professor" outcome="/pages/professorPesquisa.xhtml" icon="ui-icon-pencil"
+                            rendered="#{autenticacaoBean.usuarioLogado.funcao != 'Professor'}"/>
+                <p:menuitem value="Curso" outcome="/pages/cursoPesquisa.xhtml" icon="ui-icon-suitcase"
+                            rendered="#{autenticacaoBean.usuarioLogado.funcao != 'Professor'}"/>
+                <p:menuitem value="Disciplina" outcome="/pages/disciplinaPesquisa.xhtml" icon="ui-icon-suitcase"
+                            rendered="#{autenticacaoBean.usuarioLogado.funcao != 'Professor'}"/>
+                
             </p:submenu>
             
             <p:submenu label="Formulários"

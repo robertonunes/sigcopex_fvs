@@ -53,25 +53,25 @@
                                  
                    
                    <p:commandButton value="Novo" 
-                                    actionListener="#{cursoBean.novo}" 
-                                    update=":frmCurso:pnlCursoDados"
-                                    rendered="#{cursoBean.acao == 'Novo'}"/>
+                                    actionListener="#{disciplinaBean.novo}" 
+                                    update=":frmDisciplina:pnlDisciplinasDados"
+                                    rendered="#{disciplinaBean.acao == 'Novo'}"/>
                    
-                <p:commandButton value="Salvar" actionListener="#{cursoBean.salvar}" 
-                                 update=":msgGlobal :frmCurso:pnlCursoDados"
-                                 rendered="#{cursoBean.acao == 'Novo'}"/>
+                <p:commandButton value="Salvar" actionListener="#{disciplinaBean.salvar}" 
+                                 update=":msgGlobal :frmDisciplina:pnlDisciplinasDados"
+                                 rendered="#{disciplinaBean.acao == 'Novo'}"/>
                 
                 <p:commandButton value="Excluir"
-                                     actionListener="#{cursoBean.excluir}"
+                                     actionListener="#{disciplinaBean.excluir}"
                                      update=":msgGlobal"
-                                     rendered="#{cursoBean.acao == 'Excluir'}"/>
+                                     rendered="#{disciplinaBean.acao == 'Excluir'}"/>
                     
                     <p:commandButton value="Editar" 
-                                     actionListener="#{cursoBean.editar}" update=":msgGlobal"
-                                     rendered="#{cursoBean.acao == 'Editar'}"/>
+                                     actionListener="#{disciplinaBean.editar}" update=":msgGlobal"
+                                     rendered="#{disciplinaBean.acao == 'Editar'}"/>
                     
                     <p:button value="Voltar" 
-                                     outcome="/pages/cursoPesquisa.xhtml?faces-redirect=true"/>
+                                     outcome="/pages/disciplinaPesquisa.xhtml?faces-redirect=true"/>
                 </h:panelGrid>
             </h:form>
         </ui:define>

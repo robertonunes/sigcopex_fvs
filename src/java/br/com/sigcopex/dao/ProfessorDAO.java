@@ -6,7 +6,7 @@
 package br.com.sigcopex.dao;
 
 
-import br.com.sigcopex.domain.Disciplina;
+import br.com.sigcopex.domain.Professor;
 import br.com.sigcopex.util.HibernateUtil;
 import java.util.*;
 import org.hibernate.*;
@@ -15,14 +15,14 @@ import org.hibernate.*;
  *
  * @author Roberto
  */
-public class DisciplinaDAO {
-    public void salvar (Disciplina disciplina){
+public class ProfessorDAO {
+    public void salvar (Professor professor){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.save(disciplina);
+            sessao.save(professor);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null){
@@ -36,48 +36,48 @@ public class DisciplinaDAO {
     }
     
     
-    public List<Disciplina> listar(){
+    public List<Professor> listar(){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
-        List<Disciplina> cursos = null;
+        List<Professor> professores = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Disciplina.listar");
-            cursos = consulta.list();
+            Query consulta = sessao.getNamedQuery("Professor.listar");
+            professores = consulta.list();
         } catch (RuntimeException ex) {
             throw ex;
         } finally{
             sessao.close();
         }
-             return cursos;
+             return professores;
     }
     
     
-    public Disciplina buscarPorCodigo (Long codigo){
+    public Professor buscarPorCodigo (Long codigo){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
-        Disciplina disciplina = null;
+        Professor professor = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Disciplina.buscarPorCodigo");
+            Query consulta = sessao.getNamedQuery("Professor.buscarPorCodigo");
             consulta.setLong("codigo", codigo);
             
-            disciplina = (Disciplina) consulta.uniqueResult();
+            professor = (Professor) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
         } finally{
             sessao.close();
         }
         
-        return disciplina;
+        return professor;
     }
     
     
-    public void excluir (Disciplina disciplina){
+    public void excluir (Professor professor){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.delete(disciplina);
+            sessao.delete(professor);
             transacao.commit();
         } catch (RuntimeException ex) {
             if(transacao != null){
@@ -89,13 +89,13 @@ public class DisciplinaDAO {
         }
     }
     
-    public void editar (Disciplina disciplina){
+    public void editar (Professor professor){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.update(disciplina);
+            sessao.update(professor);
             transacao.commit();
         } catch (RuntimeException ex) {
             if(transacao != null){
@@ -107,3 +107,4 @@ public class DisciplinaDAO {
         }
     }
 }
+
