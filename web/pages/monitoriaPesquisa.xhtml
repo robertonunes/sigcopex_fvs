@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      
+    <ui:composition template="/templates/modelo_geral.xhtml">
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:event listener="#{monitoriaBean.carregarPesquisa()}" type="preRenderView" />
+            </f:metadata>
+        </ui:define>
+        
+        <ui:define name="conteudo">            
+            <h:form>
+                <p:toolbar>
+                    <f:facet name="left">
+                        <h:outputText value="Monitorias" />
+                    </f:facet>
+                </p:toolbar>
+                
+                <p:separator />
+                
+                <p:dataTable emptyMessage="Nenhum registro encontrado."
+                             value="#{monitoriaBean.listaCursos}" 
+                             filteredValue="#{monitoriaBean.listaMonitoriasFiltrados}"
+                             var="monitoria"
+                             rows="6" paginator="true">
+                    
+                    <f:facet name="footer">
+                        <p:button value="Novo" 
+                                  outcome="/pages/monitoriaCadastro.xhtml">
+                            <f:param name="monacao" value="Novo" />         
+                        </p:button>
+                    </f:facet>
+                    
+                    <p:column headerText="Código" style="width: 6%">
+                        <h:outputText value="#{monitoria.codigo}" />
+                    </p:column>
+                    
+                    <p:column headerText="Nome" filterBy="#{monitoria.nome}" 
+                              sortBy="#{monitoria.nome}">
+                        <h:outputText value="#{monitoria.nome}" />
+                    </p:column>
+                    
+                                       
+                    <p:column headerText="Curso"
+                                  filterBy="#{monitoria.curso.nome}"
+                                  sortBy="#{monitoria.fabricante.descricao}" >
+                            <h:outputText value="#{produto.fabricante.descricao}" />
+                    </p:column>
+                    
+                    <p:column headerText="Opções" style="width: 15%">
+                        <p:button value="Excluir" 
+                                  outcome="/pages/monitoriaCadastro.xhtml">
+                            <f:param name="monacao" value="Excluir" />     
+                            <f:param name="moncod" value="#{monitoria.codigo}" />
+                        </p:button>
+                        
+                        
+                        <p:button value="Editar" 
+                                  outcome="/pages/monitoriaCadastro.xhtml">
+                            <f:param name="monacao" value="Editar" />     
+                            <f:param name="moncod" value="#{monitoria.codigo}" />
+                        </p:button>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition> 
+</html>
+
+
+
