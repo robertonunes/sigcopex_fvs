@@ -25,7 +25,7 @@ import javax.persistence.*;
 public class Curso {
     
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    
     @Column (name = "curso_codigo")
     private Long codigo;
     

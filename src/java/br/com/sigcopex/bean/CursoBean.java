@@ -107,7 +107,7 @@ public class CursoBean {
             if(codigo != null){
                 
                 CursoDAO cursoDAO = new CursoDAO();
-                cursoCadastro = cursoDAO.buscarPorMatricula(codigo);
+                cursoCadastro = cursoDAO.buscarPorCodigo(codigo);
             } else {
                 cursoCadastro = new Curso();
             }

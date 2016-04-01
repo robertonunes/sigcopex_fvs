@@ -10,8 +10,8 @@
         
         <ui:define name="metadata">
             <f:metadata>
-                <f:viewParam name="usuacao" value="#{cursoBean.acao}" />
-                <f:viewParam name="usucod" value="#{cursoBean.codigo}" />
+                <f:viewParam name="cursoacao" value="#{cursoBean.acao}" />
+                <f:viewParam name="cursocod" value="#{cursoBean.codigo}" />
                 
                 <f:event listener="#{cursoBean.carregarCadastro}" type="preRenderView" />
             </f:metadata>
@@ -46,7 +46,7 @@
                 </p:inputText>
                 
                 
-                
+                </h:panelGrid>
                 
                <h:panelGrid columns="5">
                    

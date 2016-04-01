@@ -10,7 +10,7 @@
         
         <ui:define name="metadata">
             <f:metadata>
-                <f:event listener="#{cursoBean.carregarPesquisa}" type="preRenderView" />
+                <f:event listener="#{disciplinaBean.carregarPesquisa}" type="preRenderView" />
             </f:metadata>
         </ui:define>
         
@@ -19,35 +19,35 @@
              <h:form>
                 <p:toolbar>
                     <f:facet name="left">
-                        <h:outputText value="Cursos" />
+                        <h:outputText value="Disciplinas" />
                     </f:facet>
                 </p:toolbar>
                  
                  
                 
                 <p:dataTable emptyMessage="Nenhum registro encontrado"
-                             value="#{cursoBean.listaCursos}"
-                             filteredValue="#{cursoBean.listaCursosFiltrados}"
-                              var="curso" rows="8" paginator="true">
+                             value="#{disciplinaBean.listaDisciplinas}"
+                             filteredValue="#{disciplinaBean.listaDisciplinasFiltrados}"
+                              var="disciplina" rows="8" paginator="true">
                  
                      <f:facet name="footer">
-                         <p:button value="Novo" outcome="/pages/cursoCadastro.xhtml">
-                             <f:param name="cursoacao" value="Novo" />
+                         <p:button value="Novo" outcome="/pages/disciplinaCadastro.xhtml">
+                             <f:param name="disciacao" value="Novo" />
                          </p:button>
                      </f:facet>
                     
                     <p:column headerText="Matricula" style="width: 8%">
-                        <h:outputText value="#{curso.codigo}" />
+                        <h:outputText value="#{disciplina.codigo}" />
                     </p:column>
                     
-                    <p:column headerText="Nome" filterBy="#{curso.nome}" 
-                              sortBy="#{curso.nome}">
-                        <h:outputText value="#{curso.nome}"/>
+                    <p:column headerText="Nome" filterBy="#{disciplina.nome}" 
+                              sortBy="#{disciplina.nome}">
+                        <h:outputText value="#{disciplina.nome}"/>
                     </p:column>
                     
-                    <p:column headerText="Coordenador" filterBy="#{curso.coordenador}" 
-                              sortBy="#{curso.coordenador}">
-                        <h:outputText value="#{curso.coordenador}"/>
+                    <p:column headerText="Carga Horária" filterBy="#{disciplina.horas}" 
+                              sortBy="#{disciplina.horas}">
+                        <h:outputText value="#{disciplina.horas}"/>
                     </p:column>
                     
                                    
@@ -58,16 +58,16 @@
                     
                     <p:column headerText="Opções" style="width: 14%">
                         <p:button value="Excluir" 
-                                  outcome="/pages/cursoCadastro.xhtml">
-                            <f:param name="cursoacao" value="Excluir" />     
-                            <f:param name="cursocod" value="#{curso.codigo}" />
+                                  outcome="/pages/disciplinaCadastro.xhtml">
+                            <f:param name="disciacao" value="Excluir" />     
+                            <f:param name="discicod" value="#{disciplina.codigo}" />
                         </p:button>
                         
                         
                         <p:button value="Editar" 
-                                  outcome="/pages/cursoCadastro.xhtml">
-                            <f:param name="cursoacao" value="Editar" />     
-                            <f:param name="cursocod" value="#{curso.codigo}" />
+                                  outcome="/pages/disciplinaCadastro.xhtml">
+                            <f:param name="disciacao" value="Editar" />     
+                            <f:param name="discicod" value="#{disciplina.codigo}" />
                         </p:button>
                     </p:column>
                 </p:dataTable>

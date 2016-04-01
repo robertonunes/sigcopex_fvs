@@ -10,38 +10,38 @@
         
         <ui:define name="metadata">
             <f:metadata>
-                <f:viewParam name="cursoacao" value="#{cursoBean.acao}" />
-                <f:viewParam name="cursocod" value="#{cursoBean.codigo}" />
+                <f:viewParam name="disciacao" value="#{disciplinaBean.acao}" />
+                <f:viewParam name="discicod" value="#{disciplinaBean.codigo}" />
                 
-                <f:event listener="#{cursoBean.carregarCadastro}" type="preRenderView" />
+                <f:event listener="#{disciplinaBean.carregarCadastro}" type="preRenderView" />
             </f:metadata>
         </ui:define>
         
         <ui:define name="conteudo">
-            <h:form id="frmCurso">
+            <h:form id="frmDisciplina">
                 <p:toolbar>
                     <f:facet name="left">
-                        <h:outputText value="Cursos" />
+                        <h:outputText value="Disciplinas" />
                     </f:facet>
                 </p:toolbar>
                 
-                <h:panelGrid id="pnlCursoDados" columns="2">
+                <h:panelGrid id="pnlDisciplinasDados" columns="2">
                 <p:outputLabel value="Matricula:" />
                 <p:inputText size="10"  
-                             value="#{cursoBean.cursoCadastro.codigo}"
-                             readonly="#{cursoBean.acao == 'Excluir'}"/>
+                             value="#{disciplinaBean.disciplinaCadastro.codigo}"
+                             readonly="#{disciplinaBean.acao == 'Excluir'}"/>
                 
                 <p:outputLabel value="Nome:" />
                 <p:inputText maxlength="50" size="35" 
-                             value="#{cursoBean.cursoCadastro.nome}"
-                             readonly="#{cursoBean.acao == 'Excluir'}">
+                             value="#{disciplinaBean.disciplinaCadastro.nome}"
+                             readonly="#{disciplinaBean.acao == 'Excluir'}">
                     <f:validateBean />
                 </p:inputText>
                 
-                <p:outputLabel value="Coordenador" />
-                <p:inputText maxlength="50" size="35" 
-                             value="#{cursoBean.cursoCadastro.coordenador}"
-                             readonly="#{cursoBean.acao == 'Excluir'}">
+                <p:outputLabel value="Carga Horaria" />
+                <p:inputText maxlength="3" size="35" 
+                             value="#{disciplinaBean.disciplinaCadastro.horas}"
+                             readonly="#{disciplinaBean.acao == 'Excluir'}">
                     <f:validateBean />
                 </p:inputText>
                 
@@ -77,3 +77,4 @@
         </ui:define>
     </ui:composition> 
 </html>
+
