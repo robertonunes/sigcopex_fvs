@@ -3,8 +3,10 @@ package br.com.sigcopex.bean;
 
 
 import br.com.sigcopex.dao.CursoDAO;
+import br.com.sigcopex.dao.DisciplinaDAO;
 import br.com.sigcopex.dao.MonitoriaDAO;
 import br.com.sigcopex.domain.Curso;
+import br.com.sigcopex.domain.Disciplina;
 import br.com.sigcopex.domain.Monitoria;
 import br.com.sigcopex.util.FacesUtil;
 import java.util.List;
@@ -23,6 +25,7 @@ public class MonitoriaBean {
     
     // Listagem dos Curso
     private List<Curso> listaCursos;
+    private List<Disciplina> listaDisciplinas;
 
     public Monitoria getMonitoriaCadastro() {
         return monitoriaCadastro;
@@ -72,6 +75,14 @@ public class MonitoriaBean {
         this.listaCursos = listaCursos;
     }
 
+    public List<Disciplina> getListaDisciplinas() {
+        return listaDisciplinas;
+    }
+
+    public void setListaDisciplinas(List<Disciplina> listaDisciplinas) {
+        this.listaDisciplinas = listaDisciplinas;
+    }
+
     
     
     
@@ -116,6 +127,9 @@ public class MonitoriaBean {
             
             CursoDAO cursoDAO = new CursoDAO();
             listaCursos = cursoDAO.listar();
+            
+            DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+            listaDisciplinas = disciplinaDAO.listar();
         } catch (RuntimeException ex) {
             FacesUtil.adicionarMsgError("Erro ao tentar obter os dados do formulário de Monitoria: " 
                     + ex.getMessage());

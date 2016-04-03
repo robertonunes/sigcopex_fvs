@@ -82,6 +82,7 @@ public class UsuarioBean {
             usuarioCadastro = new Usuario();
             
             FacesUtil.adicionarMsgInfo("Usuario salvo com sucesso");
+            
         }catch(RuntimeException ex){
             FacesUtil.adicionarMsgError("Erro ao tentar incluir o Usuário: " + ex.getMessage());
         }

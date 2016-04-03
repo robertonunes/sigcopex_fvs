@@ -50,12 +50,15 @@
                     <f:validateBean />
                 </p:selectOneMenu>
                 
-                <p:outputLabel value="Disciplina:" />
-                <p:inputText maxlength="60" size="60" 
-                             value="#{monitoriaBean.monitoriaCadastro.disciplina}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
+                <p:outputLabel value="Discilina:" />
+                <p:selectOneMenu value="#{monitoriaBean.monitoriaCadastro.disciplina}"
+                                 converter="cursoConverter">
+                    <f:selectItem itemValue="" itemLabel="Selecione o Curso" />
+                    <f:selectItems value="#{monitoriaBean.listaCursos}" var="curso"
+                                   itemValue="#{curso}"
+                                   itemLabel="#{curso.nome}" />
                     <f:validateBean />
-                </p:inputText>
+                </p:selectOneMenu>
                 
                  <p:outputLabel value="Orientador:" />
                 <p:inputText maxlength="60" size="60" 

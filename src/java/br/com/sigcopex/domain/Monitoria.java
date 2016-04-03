@@ -56,8 +56,10 @@ public class Monitoria {
             referencedColumnName = "cur_codigo", nullable = false) 
     private Curso curso;
     
-    @Column (name = "mon_disciplina", length = 60, nullable = false)
-    private String disciplina;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "tbl_disciplina_disci_codigo", 
+            referencedColumnName = "disci_codigo", nullable = false) 
+    private Disciplina disciplina;
     
     @Column (name = "mon_orientador", length = 60, nullable = false)
     private String orientador;
@@ -119,19 +121,18 @@ public class Monitoria {
         this.curso = curso;
     }
 
-    /**
-     * @return the disciplina
-     */
-    public String getDisciplina() {
+    public Disciplina getDisciplina() {
         return disciplina;
     }
 
-    /**
-     * @param disciplina the disciplina to set
-     */
-    public void setDisciplina(String disciplina) {
+    public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
+
+    /**
+     * @return the disciplina
+     */
+    
 
     /**
      * @return the orientador
@@ -249,6 +250,8 @@ public class Monitoria {
     public String toString() {
         return "Monitoria{" + "codigo=" + codigo + ", professor=" + professor + ", curso=" + curso + ", disciplina=" + disciplina + ", orientador=" + orientador + ", semestre=" + semestre + ", vagas=" + vagas + ", tipo=" + tipo + ", realizacao=" + realizacao + ", hora=" + hora + ", justificativa=" + justificativa + ", conteudo=" + conteudo + '}';
     }
+
+   
     
     @Override
     public int hashCode() {
