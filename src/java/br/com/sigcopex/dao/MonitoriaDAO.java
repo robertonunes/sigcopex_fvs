@@ -57,19 +57,29 @@ public class MonitoriaDAO {
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Monitoria curso = null;
         
+        
         try {
+            
+            
             Query consulta = sessao.getNamedQuery("Monitoria.buscarPorCodigo");
             consulta.setLong("codigo", codigo);
             
             curso = (Monitoria) consulta.uniqueResult();
-        } catch (RuntimeException ex) {
+           
+        } 
+        
+        catch (RuntimeException ex) {
             throw ex;
         } finally{
             sessao.close();
         }
         
         return curso;
+        
+        
     }
+    
+    
     
     
     public void excluir (Monitoria monitoria){

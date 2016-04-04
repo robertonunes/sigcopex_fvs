@@ -24,7 +24,7 @@
                 <p:separator />
                 
                 <p:dataTable emptyMessage="Nenhum registro encontrado."
-                             value="#{monitoriaBean.listaCursos}" 
+                             value="#{monitoriaBean.listaMonitorias}" 
                              filteredValue="#{monitoriaBean.listaMonitoriasFiltrados}"
                              var="monitoria"
                              rows="6" paginator="true">
@@ -40,16 +40,16 @@
                         <h:outputText value="#{monitoria.codigo}" />
                     </p:column>
                     
-                    <p:column headerText="Nome" filterBy="#{monitoria.nome}" 
-                              sortBy="#{monitoria.nome}">
-                        <h:outputText value="#{monitoria.nome}" />
+                    <p:column headerText="Nome" filterBy="#{monitoria.professor}" 
+                              sortBy="#{monitoria.professor}">
+                        <h:outputText value="#{monitoria.professor}" />
                     </p:column>
                     
                                        
                     <p:column headerText="Curso"
                                   filterBy="#{monitoria.curso.nome}"
-                                  sortBy="#{monitoria.fabricante.descricao}" >
-                            <h:outputText value="#{produto.fabricante.descricao}" />
+                                  sortBy="#{monitoria.curso.nome}" >
+                        <h:outputText value="#{monitoria.curso.nome}" />
                     </p:column>
                     
                     <p:column headerText="Opções" style="width: 15%">

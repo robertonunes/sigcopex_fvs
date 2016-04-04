@@ -130,6 +130,7 @@ public class MonitoriaBean {
             
             DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
             listaDisciplinas = disciplinaDAO.listar();
+            
         } catch (RuntimeException ex) {
             FacesUtil.adicionarMsgError("Erro ao tentar obter os dados do formulário de Monitoria: " 
                     + ex.getMessage());

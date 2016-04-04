@@ -5,6 +5,7 @@
  */
 package br.com.sigcopex.domain;
 
+import java.util.Objects;
 import javax.persistence.*;
 
 /**
@@ -58,6 +59,39 @@ public class Disciplina {
     @Override
     public String toString() {
         return "Disciplina{" + "codigo=" + codigo + ", nome=" + nome + ", horas=" + horas + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.codigo);
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.horas);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Disciplina other = (Disciplina) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        if (!Objects.equals(this.horas, other.horas)) {
+            return false;
+        }
+        return true;
     }
 
     /**

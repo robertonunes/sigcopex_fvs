@@ -50,13 +50,13 @@
                     <f:validateBean />
                 </p:selectOneMenu>
                 
-                <p:outputLabel value="Discilina:" />
+                <p:outputLabel value="Disciplina:" />
                 <p:selectOneMenu value="#{monitoriaBean.monitoriaCadastro.disciplina}"
-                                 converter="cursoConverter">
-                    <f:selectItem itemValue="" itemLabel="Selecione o Curso" />
-                    <f:selectItems value="#{monitoriaBean.listaCursos}" var="curso"
-                                   itemValue="#{curso}"
-                                   itemLabel="#{curso.nome}" />
+                                 converter="disciplinaConverter">
+                    <f:selectItem itemValue="" itemLabel="Selecione a Disciplina" />
+                    <f:selectItems value="#{monitoriaBean.listaDisciplinas}" var="disciplina"
+                                   itemValue="#{disciplina}"
+                                   itemLabel="#{disciplina.nome}" />
                     <f:validateBean />
                 </p:selectOneMenu>
                 
@@ -98,6 +98,14 @@
                              readonly="#{monitoriaBean.acao == 'Excluir'}">
                     <f:validateBean />
                 </p:inputText>
+                  
+                  
+                  <p:outputLabel value="Hora da Prova" />
+                  <p:inputText maxlength="10" size="10" 
+                               value="#{monitoriaBean.monitoriaCadastro.hora}"
+                             readonly="#{monitoriaBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputText>
                  
                  <p:outputLabel value="Justificativa:" />
                  <p:inputTextarea maxlength="500" autoResize="true" 
@@ -123,20 +131,24 @@
                    
                    <p:commandButton value="Novo" 
                                     actionListener="#{monitoriaBean.novo}" 
-                                    update=":frmMonitoria:pnlMonitoriaDados"/>
+                                    update=":frmMonitoria:pnlMonitoriaDados"
+                                    rendered="#{monitoriaBean.acao == 'Novo'}"/>
                                     
                                                        
                    <p:commandButton value="Salvar" actionListener="#{monitoriaBean.salvar}" 
-                                 update=":msgGlobal :frmMonitoria:pnlMonitoriaDados"/>
+                                 update=":msgGlobal :frmMonitoria:pnlMonitoriaDados"
+                                 rendered="#{monitoriaBean.acao == 'Novo'}"/>
                                  
                 
                    <p:commandButton value="Excluir"
                                      actionListener="#{monitoriaBean.excluir}"
-                                     update=":msgGlobal" />
+                                     update=":msgGlobal" 
+                                     rendered="#{monitoriaBean.acao == 'Excluir'}"/>
                                     
                     
                    <p:commandButton value="Editar" 
-                                     actionListener="#{monitoriaBean.editar}" update=":msgGlobal"/>
+                                     actionListener="#{monitoriaBean.editar}" update=":msgGlobal"
+                                     rendered="#{monitoriaBean.acao == 'Editar'}"/>
                                      
                     
                     <p:button value="Voltar" 

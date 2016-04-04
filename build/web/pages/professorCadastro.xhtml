@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet library="css" name="estilo.css"/>
+    </h:head>
+    <ui:composition template="/templates/modelo_geral.xhtml">
+        
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="proacao" value="#{professorBean.acao}" />
+                <f:viewParam name="procod" value="#{professorBean.codigo}" />
+                
+               <f:event listener="#{professorBean.carregarCadastro}" type="preRenderView" />
+            </f:metadata>
+        </ui:define>
+        
+        <ui:define name="conteudo">
+            <h:form id="frmProfessor">
+                <p:toolbar>
+                    <f:facet name="left">
+                        <h:outputText value="Cadastro de Professores" />
+                    </f:facet>
+                </p:toolbar>
+                
+                <h:panelGrid id="pnlProfessorDados" columns="2">
+                <p:outputLabel value="Código:" />
+                <p:inputText size="10"  
+                             value="#{professorBean.professorCadastro.codigo}"
+                             readonly="#{professorBean.acao == 'Excluir'}"/>
+                
+                <p:outputLabel value="Nome:" />
+                <p:inputText maxlength="60" size="60" 
+                             value="#{professorBean.professorCadastro.nome}"
+                             readonly="#{professorBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputText>
+                
+                 
+                 <p:outputLabel value="Identidade:" />
+                <p:inputText maxlength="20" size="60" 
+                             value="#{professorBean.professorCadastro.identidade}"
+                             readonly="#{professorBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputText>
+                 
+                <p:outputLabel value="CPF:" />
+                    <p:inputMask mask="999.999.999-99" 
+                                 size="20" value="#{professorBean.professorCadastro.cpf}"
+                                 readonly="#{professorBean.acao == 'Excluir'}">
+                        <f:validateBean />
+                    </p:inputMask>
+                
+                  
+                <p:outputLabel for="phone" value="Telefone:" />
+                <p:inputMask id="phone" mask="(99)9999-9999" size="35" 
+                             value="#{professorBean.professorCadastro.telefone}"
+                             readonly="#{professorBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputMask>
+                   
+                 
+                  <p:outputLabel value="Endereço" />
+                <p:inputText maxlength="60" size="60" 
+                             value="#{professorBean.professorCadastro.endereco}"
+                             readonly="#{professorBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputText>
+                  
+                   <p:outputLabel value="Email:" />
+                <p:inputText maxlength="60" size="60" 
+                             value="#{professorBean.professorCadastro.email}"
+                             readonly="#{professorBean.acao == 'Excluir'}">
+                    <f:validateBean />
+                </p:inputText>
+                
+                </h:panelGrid>
+               
+                
+                <h:panelGrid columns="5" >
+                   
+                                 
+                   
+                   <p:commandButton value="Novo" 
+                                    actionListener="#{monitoriaBean.novo}" 
+                                    update=":frmProfessor:pnlProfessorDados"
+                                    rendered="#{professorBean.acao == 'Novo'}"/>
+                                    
+                                                       
+                   <p:commandButton value="Salvar" actionListener="#{professorBean.salvar}" 
+                                 update=":msgGlobal :frmProfessor:pnlProfessorDados"
+                                 rendered="#{professorBean.acao == 'Novo'}"/>
+                                 
+                
+                   <p:commandButton value="Excluir"
+                                    actionListener="#{professorBean.excluir}"
+                                     update=":msgGlobal"
+                                     rendered="#{professorBean.acao == 'Excluir'}"/>
+                                    
+                    
+                   <p:commandButton value="Editar" 
+                                    actionListener="#{professorBean.editar}" update=":msgGlobal"
+                                     rendered="#{professorBean.acao == 'Editar'}"/>
+                                     
+                    
+                    <p:button value="Voltar" 
+                                     outcome="/pages/professorPesquisa.xhtml?faces-redirect=true"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition> 
+</html>
