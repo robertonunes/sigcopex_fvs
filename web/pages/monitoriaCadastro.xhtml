@@ -9,16 +9,16 @@
         <h:outputStylesheet library="css" name="estilo.css"/>
     </h:head>
     <ui:composition template="/templates/modelo_geral.xhtml">
-        
+
         <ui:define name="metadata">
             <f:metadata>
                 <f:viewParam name="monacao" value="#{monitoriaBean.acao}" />
                 <f:viewParam name="moncod" value="#{monitoriaBean.codigo}" />
-                
-               <f:event listener="#{monitoriaBean.carregarCadastro}" type="preRenderView" />
+
+                <f:event listener="#{monitoriaBean.carregarCadastro}" type="preRenderView" />
             </f:metadata>
         </ui:define>
-        
+
         <ui:define name="conteudo">
             <h:form id="frmMonitoria">
                 <p:toolbar>
@@ -26,133 +26,129 @@
                         <h:outputText value="Formulário Monitoria" />
                     </f:facet>
                 </p:toolbar>
-                
+
                 <h:panelGrid id="pnlMonitoriaDados" columns="2">
-                <p:outputLabel value="Código:" />
-                <p:inputText size="10"  
-                             value="#{monitoriaBean.monitoriaCadastro.codigo}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}"/>
-                
-                <p:outputLabel value="Solicitante:" />
-                <p:inputText maxlength="60" size="60" 
-                             value="#{monitoriaBean.monitoriaCadastro.professor}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
-                    <f:validateBean />
-                </p:inputText>
-                
-                <p:outputLabel value="Curso:" />
-                <p:selectOneMenu value="#{monitoriaBean.monitoriaCadastro.curso}"
-                                 converter="cursoConverter">
-                    <f:selectItem itemValue="" itemLabel="Selecione o Curso" />
-                    <f:selectItems value="#{monitoriaBean.listaCursos}" var="curso"
-                                   itemValue="#{curso}"
-                                   itemLabel="#{curso.nome}" />
-                    <f:validateBean />
-                </p:selectOneMenu>
-                
-                <p:outputLabel value="Disciplina:" />
-                <p:selectOneMenu value="#{monitoriaBean.monitoriaCadastro.disciplina}"
-                                 converter="disciplinaConverter">
-                    <f:selectItem itemValue="" itemLabel="Selecione a Disciplina" />
-                    <f:selectItems value="#{monitoriaBean.listaDisciplinas}" var="disciplina"
-                                   itemValue="#{disciplina}"
-                                   itemLabel="#{disciplina.nome}" />
-                    <f:validateBean />
-                </p:selectOneMenu>
-                
-                 <p:outputLabel value="Orientador:" />
-                <p:inputText maxlength="60" size="60" 
-                             value="#{monitoriaBean.monitoriaCadastro.orientador}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
-                    <f:validateBean />
-                </p:inputText>
-                 
-                  <p:outputLabel value="Semestre:" />
-                <p:inputText maxlength="30" size="10" 
-                             value="#{monitoriaBean.monitoriaCadastro.semestre}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
-                    <f:validateBean />
-                </p:inputText>
-                
-                  
-                   <p:outputLabel value="Vagas" />
-                   <p:inputText maxlength="3" size="10" 
-                             value="#{monitoriaBean.monitoriaCadastro.vagas}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
-                    <f:validateBean />
-                </p:inputText>
-                   
-                 <p:outputLabel value="Tipo de Prova:" />
+                    <p:outputLabel value="Código:" />
+                    <p:inputText size="10"  
+                                 value="#{monitoriaBean.monitoriaCadastro.codigo}"
+                                 readonly="#{monitoriaBean.acao == 'Excluir'}"/>
+
+                    <p:outputLabel value="Solicitante:" />
+                    <p:inputText maxlength="60" size="60" 
+                                 value="#{monitoriaBean.monitoriaCadastro.professor}"
+                                 readonly="#{monitoriaBean.acao == 'Excluir'}">
+                        <f:validateBean />
+                    </p:inputText>
+
+                    <p:outputLabel value="Curso:" />
+                    <p:selectOneMenu value="#{monitoriaBean.monitoriaCadastro.curso}"
+                                     converter="cursoConverter">
+                        <f:selectItem itemValue="" itemLabel="Selecione o Curso" />
+                        <f:selectItems value="#{monitoriaBean.listaCursos}" var="curso"
+                                       itemValue="#{curso}"
+                                       itemLabel="#{curso.nome}" />
+                        <f:validateBean />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Disciplina:" />
+                    <p:selectOneMenu value="#{monitoriaBean.monitoriaCadastro.disciplina}"
+                                     converter="disciplinaConverter">
+                        <f:selectItem itemValue="" itemLabel="Selecione a Disciplina" />
+                        <f:selectItems value="#{monitoriaBean.listaDisciplinas}" var="disciplina"
+                                       itemValue="#{disciplina}"
+                                       itemLabel="#{disciplina.nome}" />
+                        <f:validateBean />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Orientador:" />
+                    <p:inputText maxlength="60" size="60" 
+                                 value="#{monitoriaBean.monitoriaCadastro.orientador}"
+                                 readonly="#{monitoriaBean.acao == 'Excluir'}">
+                        <f:validateBean />
+                    </p:inputText>
+
+                    <p:outputLabel value="Semestre:" />
+                    <p:inputText maxlength="30" size="10" 
+                                 value="#{monitoriaBean.monitoriaCadastro.semestre}"
+                                 readonly="#{monitoriaBean.acao == 'Excluir'}">
+                        <f:validateBean />
+                    </p:inputText>
+
+
+                    <p:outputLabel value="Vagas" />
+                    <p:inputText maxlength="3" size="10" 
+                                 value="#{monitoriaBean.monitoriaCadastro.vagas}"
+                                 readonly="#{monitoriaBean.acao == 'Excluir'}">
+                        <f:validateBean />
+                    </p:inputText>
+
+                    <p:outputLabel value="Tipo de Prova:" />
                     <p:selectOneMenu value="#{monitoriaBean.monitoriaCadastro.tipo}"
                                      >
                         <f:selectItem itemValue="" itemLabel="Selecione o tipo de prova" />
                         <f:selectItem itemValue="Teorica" itemLabel="Teórica" />
                         <f:selectItem itemValue="Pratica" itemLabel="Prática" />
                         <f:selectItem itemValue="Entrevista" itemLabel="Entrevista" />
-                            
+
                     </p:selectOneMenu>
-                 
-                  <p:outputLabel value="Data da Prova" />
-                <p:inputText maxlength="30" size="10" 
-                             value="#{monitoriaBean.monitoriaCadastro.semestre}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
-                    <f:validateBean />
-                </p:inputText>
-                  
-                  
-                  <p:outputLabel value="Hora da Prova" />
-                  <p:inputText maxlength="10" size="10" 
-                               value="#{monitoriaBean.monitoriaCadastro.hora}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
-                    <f:validateBean />
-                </p:inputText>
-                 
-                 <p:outputLabel value="Justificativa:" />
-                 <p:inputTextarea maxlength="500" autoResize="true" 
-                                  value="#{monitoriaBean.monitoriaCadastro.justificativa}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
-                    <f:validateBean />
-                </p:inputTextarea>
-                
-                <p:outputLabel value="Conteúdo Programático:" />
-                <p:inputTextarea maxlength="2000" 
-                             value="#{monitoriaBean.monitoriaCadastro.conteudo}"
-                             readonly="#{monitoriaBean.acao == 'Excluir'}">
-                    <f:validateBean />
-                </p:inputTextarea>
-                 
-                
+
+                    <p:outputLabel value="Data da Prova" />
+
+                    <p:calendar id="popup" value="#{monitoriaBean.monitoriaCadastro.realizacao}"
+                                readonly="#{monitoriaBean.acao == 'Excluir'}" >
+                        <f:convertDateTime pattern="dd/MM/yy" />
+                    </p:calendar>
+
+                    <p:outputLabel value="Hora da Prova" />
+                    <p:inputText maxlength="10" size="10" 
+                                 value="#{monitoriaBean.monitoriaCadastro.hora}"
+                                 readonly="#{monitoriaBean.acao == 'Excluir'}" >
+                        <f:convertDateTime pattern="HH:mm"/>
+                    </p:inputText>
+
+                    <p:outputLabel value="Justificativa:" />
+                    <p:inputTextarea cols="70" rows="7" maxlength="1000" autoResize="false" 
+                                     value="#{monitoriaBean.monitoriaCadastro.justificativa}"
+                                     readonly="#{monitoriaBean.acao == 'Excluir'}">
+                        <f:validateBean />
+                    </p:inputTextarea>
+
+                    <p:outputLabel value="Conteúdo Programático:" />
+                    <p:inputTextarea cols = "70" rows = "7" autoResize ="false"
+                                     maxlength="1000" 
+                                     value="#{monitoriaBean.monitoriaCadastro.conteudo}"
+                                     readonly="#{monitoriaBean.acao == 'Excluir'}">
+                        <f:validateBean />
+                    </p:inputTextarea>
+
                 </h:panelGrid>
-               
-                
+
                 <h:panelGrid columns="5" >
-                   
-                                 
-                   
-                   <p:commandButton value="Novo" 
-                                    actionListener="#{monitoriaBean.novo}" 
-                                    update=":frmMonitoria:pnlMonitoriaDados"
-                                    rendered="#{monitoriaBean.acao == 'Novo'}"/>
-                                    
-                                                       
-                   <p:commandButton value="Salvar" actionListener="#{monitoriaBean.salvar}" 
-                                 update=":msgGlobal :frmMonitoria:pnlMonitoriaDados"
-                                 rendered="#{monitoriaBean.acao == 'Novo'}"/>
-                                 
-                
-                   <p:commandButton value="Excluir"
+
+                    <p:commandButton value="Novo" 
+                                     actionListener="#{monitoriaBean.novo}" 
+                                     update=":frmMonitoria:pnlMonitoriaDados"
+                                     rendered="#{monitoriaBean.acao == 'Novo'}"/>
+
+
+                    <p:commandButton value="Salvar" actionListener="#{monitoriaBean.salvar}" 
+                                     update=":msgGlobal :frmMonitoria:pnlMonitoriaDados"
+                                     rendered="#{monitoriaBean.acao == 'Novo'}"/>
+
+
+                    <p:commandButton value="Excluir"
                                      actionListener="#{monitoriaBean.excluir}"
                                      update=":msgGlobal" 
                                      rendered="#{monitoriaBean.acao == 'Excluir'}"/>
-                                    
-                    
-                   <p:commandButton value="Editar" 
+
+
+                    <p:commandButton value="Editar" 
                                      actionListener="#{monitoriaBean.editar}" update=":msgGlobal"
                                      rendered="#{monitoriaBean.acao == 'Editar'}"/>
-                                     
-                    
+
+
                     <p:button value="Voltar" 
-                                     outcome="/pages/principal.xhtml?faces-redirect=true"/>
+                              outcome="/pages/principal.xhtml?faces-redirect=true"/>
                 </h:panelGrid>
             </h:form>
         </ui:define>

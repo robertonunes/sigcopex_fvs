@@ -20,13 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotEmpty;
 
 
 /**
@@ -49,8 +42,7 @@ public class Monitoria {
     
     @Column (name = "mon_nome", length = 60, nullable = false)
     private String professor;
-    
-    
+   
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tbl_curso_cur_codigo", 
             referencedColumnName = "cur_codigo", nullable = false) 

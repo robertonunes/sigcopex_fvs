@@ -16,48 +16,65 @@ import org.apache.commons.codec.digest.DigestUtils;
  *
  * @author Roberto
  */
-
 @ManagedBean
 @SessionScoped
 public class AutenticacaoBean {
-    private Usuario usuarioLogado;
+
+    /**
+     * @return the usuarioAtivo
+     */
+    public static Usuario getUsuarioAtivo() {
+        return usuarioAtivo;
+    }
+
+    /**
+     * @param aUsuarioAtivo the usuarioAtivo to set
+     */
+    public static void setUsuarioAtivo(Usuario aUsuarioAtivo) {
+        usuarioAtivo = aUsuarioAtivo;
+    }
+
+    Usuario usuarioLogado;
+    private static Usuario usuarioAtivo;
 
     public Usuario getUsuarioLogado() {
-        if(usuarioLogado == null){
+        if (usuarioLogado == null) {
             usuarioLogado = new Usuario();
+            setUsuarioAtivo(usuarioLogado);
         }
         return usuarioLogado;
     }
 
     public void setUsuarioLogado(Usuario Logado) {
-        this.usuarioLogado = usuarioLogado;
+        usuarioLogado = usuarioLogado;
     }
-    
-    
-    public String autenticar(){
+
+    public String autenticar() {
         try {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             usuarioLogado = usuarioDAO.autenticar(
                     usuarioLogado.getCpf(), DigestUtils.md5Hex(usuarioLogado.getSenha()));
+            usuarioAtivo = usuarioLogado;
             if (usuarioLogado == null) {
                 FacesUtil.adicionarMsgError("CPF e/ou senha inválido(s)");
                 return null;
-            } else{
-                FacesUtil.adicionarMsgInfo("Usuário autenticado com sucesso: "+usuarioLogado.getNome());
+            } else {
+                FacesUtil.adicionarMsgInfo("Usuário autenticado com sucesso: " + usuarioLogado.getNome());
                 return "/pages/principal.xhtml?faces-redirect=true";
             }
-            
+
         } catch (RuntimeException ex) {
             FacesUtil
                     .adicionarMsgError("Erro ao tentar autenticar no sistema: "
-                    + ex.getMessage());
+                            + ex.getMessage());
             return null;
         }
-        
+
     }
-    
-    public String sair(){
+
+    public String sair() {
         usuarioLogado = null;
         return "/pages/autenticacao.xhtml?faces-redirect=true";
     }
+
 }
