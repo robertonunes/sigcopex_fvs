@@ -5,7 +5,7 @@
  */
 package br.com.sigcopex.dao;
 
-import br.com.sigcopex.domain.Monitoria;
+import br.com.sigcopex.domain.TermoAutorizacaoExtensao;
 import br.com.sigcopex.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
@@ -16,14 +16,14 @@ import org.hibernate.Transaction;
  *
  * @author Roberto
  */
-public class MonitoriaDAO {
-    public void salvar (Monitoria monitoria){
+public class TermoAutorizacaoExtensaoDAO {
+    public void salvar (TermoAutorizacaoExtensaoDAO termoAutorizacaoExtensao){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.save(monitoria);
+            sessao.save(termoAutorizacaoExtensao);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null){
@@ -37,34 +37,34 @@ public class MonitoriaDAO {
     }
     
     
-    public List<Monitoria> listar(){
+    public List<TermoAutorizacaoExtensao> listar(){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
-        List<Monitoria> monitorias = null;
+        List<TermoAutorizacaoExtensao> termoAutorizacaoExtensaos = null;
         
         try {
             Query consulta = sessao.getNamedQuery("Monitoria.listar");
-            monitorias = consulta.list();
+            termoAutorizacaoExtensaos = consulta.list();
         } catch (RuntimeException ex) {
             throw ex;
         } finally{
             sessao.close();
         }
-             return monitorias;
+             return termoAutorizacaoExtensaos;
     }
     
     
-    public Monitoria buscarPorCodigo (Long codigo){
+    public TermoAutorizacaoExtensao buscarPorCodigo (Long codigo){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
-        Monitoria curso = null;
+        TermoAutorizacaoExtensao termoAutorizacaoExtensao = null;
         
         
         try {
             
             
-            Query consulta = sessao.getNamedQuery("Monitoria.buscarPorCodigo");
+            Query consulta = sessao.getNamedQuery("TermoAutorizacaoExtensao.buscarPorCodigo");
             consulta.setLong("codigo", codigo);
             
-            curso = (Monitoria) consulta.uniqueResult();
+            termoAutorizacaoExtensao = (TermoAutorizacaoExtensao) consulta.uniqueResult();
            
         } 
         
@@ -74,7 +74,7 @@ public class MonitoriaDAO {
             sessao.close();
         }
         
-        return curso;
+        return termoAutorizacaoExtensao;
         
         
     }
@@ -82,13 +82,13 @@ public class MonitoriaDAO {
     
     
     
-    public void excluir (Monitoria monitoria){
+    public void excluir (TermoAutorizacaoExtensao termoAutorizacaoExtensao){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.delete(monitoria);
+            sessao.delete(termoAutorizacaoExtensao);
             transacao.commit();
         } catch (RuntimeException ex) {
             if(transacao != null){
@@ -100,13 +100,13 @@ public class MonitoriaDAO {
         }
     }
     
-    public void editar (Monitoria monitoria){
+    public void editar (TermoAutorizacaoExtensao termoAutorizacaoExtensao){
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.update(monitoria);
+            sessao.update(termoAutorizacaoExtensao);
             transacao.commit();
         } catch (RuntimeException ex) {
             if(transacao != null){
