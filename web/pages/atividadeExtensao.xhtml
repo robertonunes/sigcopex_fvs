@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Formulário para Atividade de Extensão</title>
+    </h:head>
+    
+    <h:body>
+        <h3>FORMULÁRIO PARA ATIVIDADE DE EXTENSÃO</h3>
+        
+        <h:form id="frm">
+            
+            <h:panelGrid columns="1">
+                <h:outputLabel value="Título do Projeto" />
+                <h:inputTextarea cols="100" rows="7" />
+            </h:panelGrid>
+            
+            <h3>IDENTIFICAÇÃO DA AÇÃO DE EXTENSÃO</h3>
+            <strong>MODALIDADE DE AÇÃO DE EXTENSÃO</strong>
+            <p>Informe a letra correspondente à modalidade <i>(opção única)</i>. Observe a conceituação do Plano Nacional de Extensão transcrita
+            abaixo e escolha a que mais se encaixe à ação de extensão proposta</p>
+            <h:selectOneRadio >
+                <f:selectItem itemLabel="Programa" itemValue="Programa" />
+		<f:selectItem itemLabel="Projeto" itemValue="Projeto" />
+		<f:selectItem itemLabel="Curso" itemValue="Curso" />
+		<f:selectItem itemLabel="Evento" itemValue="Evento" />
+		<f:selectItem itemLabel="Prestação de Serviço" itemValue="Prestação de Serviço" />
+	</h:selectOneRadio>
+            
+            <p><strong>Programa: </strong>Conjunto de ações de caráter orgânico-institucional, de médio e longo prazo,
+            com clareza de diretrizes e orientadas a um objetivo comum, articulando projetos e outras ações existentes.</p>
+            <p><strong>Projeto: </strong>Conjunto de ações processuais contínuas, de caráter educativo, social,
+            cultural, científico e tecnológico.
+            Se um projeto se caracteriza por uma relação contratual de prestação de serviços, deverá ser registrada como 
+            "Prestação de serviços". Entretanto, se essa prestação é parte de um conjunto de ações processuais 
+            continuas, a ação deve ser registrada como projeto. <u>Cursos</u> não devem ser registrados como projetos, embora
+             sua elaboração envolva a existência de projeto operacional.</p>
+            <p><strong>Curso*: </strong>Conjunto articulado de ações pedagógics, de caráter teórico e/ou prático, 
+            presencial ou a distância, planejadas e organizadas de maneira sistemática, com carga horária definida 
+            (mínima de oito horas) e processo de avaliação formal. Inclui oficina, <u>workshop</u> ,laboratório 
+            e treinamentos. As prestações de serviços oferecidas sob a forma de curso devem ser registradas somente como "Curso".</p>
+            <p><strong>Evento*: </strong>Ação de interesse técnico científico, com que se viabiliza/empreende 
+            algum acontecimento formal, de natureza sóciopolítico, comuitária, desportiva e cultural: 
+            Campanha de difusão Cultural; Campeonato; Ciclo de Estudos; Circuito; Colóquio; Concerto; Conclave; 
+            Conferência; Congresso; Debate; Encontro; Espetáculo; Exposição; Feira; Festival; Fórum; Jornada; 
+            Lançamento de Publicações e Produtos; Mesa Redonda; Mostra; Olímpiada; Palestra; Recital; Reunião; 
+            Semana de Estudos; Seminário; Show; Simpósio; Torneio; e outros.</p>
+            <p><strong>Prestação de Serviço: </strong>Realização de trabalho oferecido ou contratado por terceitos 
+            (comunidade ou empresa), incluindo assessorias, consultorias e cooperação interinstitucional. Deve ser 
+            registrada a prestação de serviços institucionais realizada pelos hospitais, clínicas, laboratórios, 
+            centros de psicologia, museus e núcleos de acervos universitários, dentre outros, seja de caráter 
+            permanente ou eventual. Quando a prestação de serviço for oferecida como curso ou projeto de extensão, 
+            deve ser registrada como tal (curso ou projeto).</p>
+            <p><strong>* Curso ou Evento deverá ser obigatóriamente preenchido também o Anexo I.</strong></p>
+            
+            
+            <h3>VINCULO DA AÇÃO DE EXTENSÃO</h3>
+            <p>Informe se a Ação de Extensão possui vínculo com algum Programa de Extensão:</p>
+            
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Qual? " />
+                <h:inputText size="100" />
+                
+                <h:outputLabel value="Período do Programa: " />
+                <h:inputText size="100" />
+            </h:panelGrid>
+            
+        </h:form>
+    </h:body>
+</html>
+
+

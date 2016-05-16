@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Inscrição Extensão</title>
+    </h:head>
+    
+    <h:body>
+        <h1>Inscrição Formulário de Extensão</h1>
+        
+        <h:form id="frm">
+            
+            <h:panelGrid columns="1">
+                    <h:outputLabel value="Título do Projeto" />
+                    <h:inputTextarea cols="92" rows="7" />
+            </h:panelGrid>
+            <br/>
+            <h:outputLabel value="COORDENADOR DO PROJETO" />
+            <br/>
+            <br/>
+            <h:panelGrid columns="2">
+                    <h:outputLabel value="Nome" />
+                    <h:inputText size="60" />
+                    
+                    <h:outputLabel value="Formação Acadêmica/Titulação" />
+                    <h:inputText size="60" />
+                    
+                    <h:outputLabel value="Contatos"/>
+                    <h:outputLabel />
+                    
+                    <h:outputLabel value="Telefone" />
+                    <h:inputText size="60"/>
+                    
+                    <h:outputLabel value="E-mail" />
+                    <h:inputText size="60" />
+                    
+                    
+            </h:panelGrid>
+            <br/>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Área temática em que se insere a proposta" />
+                
+                    
+                    
+                    <h:selectOneRadio layout="pageDirection">
+                        <f:selectItem itemLabel="Cultura e Artes" />
+                        <f:selectItem itemLabel="Educação Direito e Cidadania" />
+                        <f:selectItem itemLabel="Desenvolvimento regional sustentável" />
+                        <f:selectItem itemLabel="Tecnologia, trabalho e inclusão digital" />
+                        <f:selectItem itemLabel="Saúde" />
+                    </h:selectOneRadio>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

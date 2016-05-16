@@ -24,11 +24,11 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
-@Table(name = "tbl_termoautext")
+@Table(name = "tbl_termo")
 @NamedQueries({
-    @NamedQuery(name = "TermoAutorizacaoExtensao.listar", query = "SELECT termoAutorizacaoExtensao FROM TermoAutorizacaoExtensao termoAutorizacaoExtensao"),
-    @NamedQuery(name = "termoAutorizacaoExtensao.buscarPorCodigo", query = "SELECT termoAutorizacaoExtensao FROM TermoAutorizacaoExtensao termoAutorizacaoExtensao WHERE TermoAutorizacaoExtensao.codigo = :codigo"),
-    
+     @NamedQuery(name = "TermoAutorizacaoExtensao.listar", query = "SELECT termoAutorizacaoExtensao FROM TermoAutorizacaoExtensao termoAutorizacaoExtensao"),
+     @NamedQuery(name = "TermoAutorizacaoExtensao.buscarPorCodigo",
+             query = "SELECT termoAutorizacaoExtensao FROM TermoAutorizacaoExtensao termoAutorizacaoExtensao WHERE termoAutorizacaoExtensao.codigo = :codigo")
 })
 public class TermoAutorizacaoExtensao {
     @Id

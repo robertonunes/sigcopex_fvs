@@ -25,5 +25,6 @@
     <mapping class="br.com.sigcopex.domain.Curso"/>
     <mapping class="br.com.sigcopex.domain.Monitoria"/>
     <mapping class="br.com.sigcopex.domain.Professor"/>
+    <mapping class="br.com.sigcopex.domain.TermoAutorizacaoExtensao"/>
   </session-factory>
 </hibernate-configuration>
